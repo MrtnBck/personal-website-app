@@ -5,6 +5,8 @@ import "./globals.css";
 import ScrollHideNavbar from "@/components/ScrollHideNavbar";
 import LocationLiveStatus from "@/components/LocationLiveStatus";
 
+import Footer from "@/components/Footer";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -36,6 +38,7 @@ export default function RootLayout({
           </div>
         </div>
         {children}
+        <Footer />
       </body>
     </html>
   );
