@@ -8,7 +8,8 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--foreground);
+  --color-primary-light: var(--foreground);
+  --color-primary-dark: var(--background);
   --color-secondary: #909090;
   --color-emerald: #41e9a4;
   --color-indigo: #7b8cec;
