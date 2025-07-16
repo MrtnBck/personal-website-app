@@ -12,7 +12,7 @@ export default function EducationItem({ year, title, institution, location }: Ed
       <h4 className="text-xl font-semibold leading-none mb-1">{title}</h4>
       <p className="text-md leading-none">{institution}</p>
       {institution.includes("Udemy") ? (
-        <a href={location} className="text-md leading-none">
+        <a href={location} target="_blank" className="text-md leading-none">
           Link
         </a>
       ) : (
