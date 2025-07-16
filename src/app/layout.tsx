@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import ScrollHideNavbar from "@/components/ScrollHideNavbar";
+import LocationLiveStatus from "@/components/LocationLiveStatus";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,6 +31,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
         <div className="mb-10">
           <ScrollHideNavbar />
+          <div className="mt-13 flex justify-end px-4 ">
+            <LocationLiveStatus />
+          </div>
         </div>
         {children}
       </body>

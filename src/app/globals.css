@@ -17,6 +17,15 @@
   --color-pink: #e51d95;
 }
 
+@layer utilities {
+  .font-space-grotesk {
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
+  .font-inter {
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
