@@ -7,9 +7,9 @@ type SkillItemProps = {
 
 export default function SkillItem({ item }: { item: SkillItemProps }) {
   return (
-    <div className="flex flex-col items-center gap-2 mb-6">
+    <li className="flex flex-col items-center gap-2 mb-6">
       <Icon icon={item.icon} className="h-6 w-6 " />
       <p className="">{item.label}</p>
-    </div>
+    </li>
   );
 }
