@@ -27,30 +27,78 @@ export default function Home() {
             </h3>
           </div>
         </div>
-        <h2 className="text-2xl mt-16 mb-4 ">My Story</h2>
-        <p className="text-base text-justify">
-          I began my academic journey in engineering in Budapest. I’ve always enjoyed viewing the world as a complex
-          system, where different parts connect and influence each other. When I had to choose a university major,
-          <span className=" text-emerald"> mechatronics</span> caught my attention—combining mechanical, electrical, and
-          software engineering. It gave me a broad perspective and helped me understand how different disciplines come
-          together to form a bigger picture. While I may not have become Tony Stark (yet), I gained valuable knowledge
-          and developed key skills such as analytical thinking, precision, problem solving, and teamwork during various
-          project assignments. In parallel with my technical studies, I discovered that I also enjoy organizing and
-          coordinating events—big or small. I wanted to strengthen these abilities and gain insights beyond the
-          technical world, so after completing my bachelor’s degree in Mechatronics, I enrolled in a Master’s in
-          Business Development. I was looking for a foundation that would help me navigate the business world—and I
-          found it. During my master’s, I developed a growing interest in IT and web technologies. I started teaching
-          myself the basics of web development, and took IT-related courses during my Erasmus semester, which helped me
-          build a deeper understanding of programming concepts. I loved the feeling of building websites from the ground
-          up—putting together essential building blocks and working on designs that are not just functional but visually
-          satisfying. To me, it felt like an adult version of playing with LEGO: creative, modular, and full of
-          possibilities. After graduating in Vienna, I found a job as a developer at a small Austrian company, where I
-          worked on several frontend projects, but also had the chance to explore backend development. You can read more
-          about these projects on the Experience page. Right now, I’m taking some time to deepen my skills and prepare
-          for my next opportunity where I can continue my journey as a web developer. Have I mentioned that learning and
-          growth are my passions? I truly enjoy picking up new skills, building useful things, and evolving both
-          professionally and personally through the process.
-        </p>
+        <div className="mt-24 flex flex-col items-end">
+          <p className="mr-2 text-base mb-2">Highlights explained...</p>
+          <ul className="font-space-grotesk text-secondary text-sm">
+            <li className="flex items-center mb-1">
+              <span className="h-4 w-4 inline-block mr-2 bg-emerald rounded-full"></span>
+              Education
+            </li>
+            <li className="flex items-center mb-1">
+              <span className="h-4 w-4 inline-block mr-2 bg-indigo rounded-full"></span>
+              Locations
+            </li>
+            <li className="flex items-center justify-start mb-1">
+              <span className="h-4 w-4 inline-block mr-2 bg-violet rounded-full"></span>
+              Skills & Competencies
+            </li>
+            <li className="flex items-center mb-1">
+              <span className="h-4 w-4 inline-block mr-2 bg-pink rounded-full"></span>
+              Interests & Passions
+            </li>
+          </ul>
+        </div>
+        <h2 className="text-2xl mt-10 mb-4 ">My Story</h2>
+        <div className="text-base text-justify ">
+          <p className="mb-4">
+            I began my academic journey in engineering in <span className=" text-indigo">Budapest</span>. I’ve always
+            enjoyed viewing the world as a complex system, where different parts connect and influence each other. When
+            I had to choose a university major,
+            <span className=" text-emerald"> mechatronics</span> caught my attention—combining{" "}
+            <span className=" text-violet">mechanical</span>, <span className=" text-violet">electrical</span>, and{" "}
+            <span className=" text-violet">software engineering</span>. It gave me a broad perspective and helped me
+            understand how different disciplines come together to form a bigger picture. While I may not have become
+            Tony Stark (yet), I gained valuable knowledge and developed key skills such as
+            <span className=" text-violet"> analytical thinking</span>, <span className=" text-violet">precision</span>,
+            <span className=" text-violet"> problem solving</span>, and <span className=" text-violet">teamwork</span>{" "}
+            during various project assignments.
+          </p>
+          <p className="mb-4">
+            In parallel with my technical studies, I discovered that I also enjoy
+            <span className=" text-violet">organizing</span> and <span className=" text-violet">coordinating</span>{" "}
+            events—big or small. I wanted to strengthen these abilities and gain insights beyond the technical world, so
+            after completing my bachelor’s degree in Mechatronics, I enrolled in a Master’s in{" "}
+            <span className=" text-emerald">Business Development</span>. I was looking for a foundation that would help
+            me navigate the business world—and I found it.
+          </p>
+          <p className="mb-4">
+            During my master’s, I developed a growing interest in <span className=" text-pink">IT</span> and{" "}
+            <span className=" text-pink">web technologies</span> . I started teaching myself the basics of web
+            development, and took IT-related courses during my Erasmus semester, which helped me build a deeper
+            understanding of programming concepts. I loved the feeling of{" "}
+            <span className=" text-pink">building websites</span> from the ground up—putting together essential building
+            blocks and working on designs that are not just functional but visually satisfying. To me, it felt like an
+            adult version of playing with LEGO: creative, modular, and full of possibilities.
+          </p>
+          <p className="mb-4">
+            After graduating in <span className=" text-indigo">Vienna</span>, I found a job as a developer at a small
+            Austrian company, where I worked on several <span className=" text-violet">frontend </span> projects, but
+            also had the chance to explore <span className=" text-violet">backend </span> development. You can read more
+            about these projects on the Experience page.
+          </p>
+          <p className="mb-4">
+            {" "}
+            Right now, I’m taking some time to deepen my skills and prepare for my next opportunity where I can continue
+            my journey as a web developer.
+          </p>
+          <p className="mb-4">
+            I truly enjoy picking up new skills, building useful things, and evolving both professionally and personally
+            through the process.
+          </p>
+          <p className="mb-4 font-space-grotesk text-secondary">
+            Have I mentioned that learning and growth are my passions?
+          </p>
+        </div>
       </div>
     </>
   );
