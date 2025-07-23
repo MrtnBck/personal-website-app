@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     const params = {
       Destination: {
-        ToAddresses: [process.env.AWS_SES_FROM_EMAIL!],
+        ToAddresses: [process.env.AWS_SES_FROM_EMAIL!], // Your business inbox
       },
       Message: {
         Body: {
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
           Data: `New Contact Form Message from ${name}`,
         },
       },
-      Source: process.env.AWS_SES_FROM_EMAIL!,
+      Source: process.env.AWS_SES_FROM_EMAIL!, // Verified SES sender
       ReplyToAddresses: [email],
     };
 
