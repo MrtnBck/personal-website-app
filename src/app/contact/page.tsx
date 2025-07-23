@@ -59,7 +59,7 @@ export default function Contact() {
       <p className="font-space-grotesk text-secondary text-center">
         Open to ideas, conversations, and new opportunities.
       </p>
-      <h3 className="text-2xl mt-6 text-center mb-6">Let&apos;s connect!</h3>
+      <h3 className="text-2xl mt-6 text-center mb-6">Get in touch!</h3>
 
       <div className="mb-6">
         <h4 className="text-xl font-bold">Email</h4>
