@@ -6,6 +6,7 @@ import ScrollHideNavbar from "@/components/ScrollHideNavbar";
 import LocationLiveStatus from "@/components/LocationLiveStatus";
 
 import Footer from "@/components/Footer";
+import FloatingBackground from "@/components/FloatingBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,13 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
-        <div className="mb-10">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased overflow-x-hidden`}>
+        <FloatingBackground />
+        <main className="relative z-11 mb-10 overflow-hidden">
           <ScrollHideNavbar />
           <div className="mt-13 flex justify-end px-4 ">
             <LocationLiveStatus />
           </div>
-        </div>
+        </main>
         {children}
         <Footer />
       </body>

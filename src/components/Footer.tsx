@@ -19,16 +19,16 @@ export default function Footer() {
             className="object-cover min-w-[80px]  "
           />
         </div>
-        <div className="col-span-6 flex flex-col justify-between items-center text-sm">
+        <div className="px-2 py-1 col-span-6 flex flex-col justify-between items-center text-xs sm:text-sm">
           <p
-            className="font-space-grotesk text-secondary cursor-pointer hover:opacity-80"
+            className="font-space-grotesk text-secondary cursor-pointer hover:opacity-80 text-sm"
             onClick={handleCopyToClipboard}
           >
             martinbock.me
           </p>
           <div className="flex flex-col items-center">
-            <p className="">Made with ❤️ in Vienna</p>
-            <p className="mt-2">© 2025 All rights reserved.</p>
+            <p className="text-center">Made with ❤️ in Vienna</p>
+            <p className="mt-2 text-center">© 2025 All rights reserved.</p>
           </div>
         </div>
         <div className="col-span-3 flex items-center justify-end">

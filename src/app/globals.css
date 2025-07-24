@@ -16,6 +16,7 @@
   --color-indigo: #7b8cec;
   --color-violet: #9c3aca;
   --color-pink: #e51d95;
+  --color-blue: #3b82f6;
 }
 
 @layer utilities {
