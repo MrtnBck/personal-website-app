@@ -18,19 +18,19 @@ export default function TransitionLink({ children, href, ...props }: TransitionL
     //call onToggleMenu in the parent component
     props.onToggleMenu?.();
 
-    const body = document.querySelector("#transition-content");
-    body?.classList.add("page-transition");
+    const transitionContent = document.querySelector("#transition-content");
+    transitionContent?.classList.add("page-transition");
 
     //run fade out exit animation with framer motion
     //sleep for a bit
-    await sleep(300); // Adjust duration as needed
+    await sleep(300);
 
     router.push(href);
 
-    await sleep(300); // Adjust duration as needed
+    await sleep(300);
 
     //run fade in enter animation with framer motion
-    body?.classList.remove("page-transition");
+    transitionContent?.classList.remove("page-transition");
   };
 
   return (

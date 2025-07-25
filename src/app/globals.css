@@ -32,10 +32,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
 
-  transition-property: opacity, background, filter;
+#transition-content {
+  transition-property: opacity, background, transform, filter;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
+  transition-duration: 300ms;
 }
 
 .page-transition {
@@ -43,3 +45,11 @@ body {
   background: var(--background);
   filter: blur(10px);
 }
+
+/* implement later */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
