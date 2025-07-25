@@ -35,11 +35,13 @@ export default function RootLayout({
         <FloatingBackground />
         <main className="relative z-11 mb-10 overflow-hidden">
           <ScrollHideNavbar />
-          <div className="mt-13 flex justify-end px-4 ">
-            <LocationLiveStatus />
+          <div id="transition-content">
+            <div className="mt-13 flex justify-end px-4 ">
+              <LocationLiveStatus />
+            </div>
+            {children}
           </div>
         </main>
-        {children}
         <Footer />
       </body>
     </html>

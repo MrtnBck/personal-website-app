@@ -27,7 +27,7 @@ export default function FloatingBackground() {
     <motion.div
       animate={{
         x: [50, 150, 50], // bal-jobb-bal
-        y: [0, scrollHeight - svgSize, 0], //scrollheight - the footer height - svg height
+        y: [0, scrollHeight - svgSize - 400, 0], //scrollheight - the footer height - svg height
         backgroundColor: [
           "var(--color-emerald)",
           "var(--color-blue)",

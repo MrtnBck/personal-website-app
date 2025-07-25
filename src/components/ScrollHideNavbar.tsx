@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import Link from "next/link";
+
+import TransitionLink from "@/components/utils/TransitionLink";
 
 export default function ScrollHideNavbar() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -61,37 +62,21 @@ export default function ScrollHideNavbar() {
       >
         <div className="max-w-screen-xl mx-auto px-4 py-4">
           <nav className="flex flex-col space-y-4">
-            <Link href="/" className="text-primary-dark hover:text-secondary transition-colors" onClick={onToggleMenu}>
+            <TransitionLink href="/" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Home
-            </Link>
-            <Link
-              href="/skills"
-              className="text-primary-dark hover:text-secondary transition-colors"
-              onClick={onToggleMenu}
-            >
+            </TransitionLink>
+            <TransitionLink href="/skills" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Skills
-            </Link>
-            <Link
-              href="/education"
-              className="text-primary-dark hover:text-secondary transition-colors"
-              onClick={onToggleMenu}
-            >
+            </TransitionLink>
+            <TransitionLink href="/education" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Education
-            </Link>
-            <Link
-              href="/experiences"
-              className="text-primary-dark hover:text-secondary transition-colors"
-              onClick={onToggleMenu}
-            >
+            </TransitionLink>
+            <TransitionLink href="/experiences" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Experiences
-            </Link>
-            <Link
-              href="/contact"
-              className="text-primary-dark hover:text-secondary transition-colors"
-              onClick={onToggleMenu}
-            >
+            </TransitionLink>
+            <TransitionLink href="/contact" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Contact
-            </Link>
+            </TransitionLink>
           </nav>
         </div>
       </div>
