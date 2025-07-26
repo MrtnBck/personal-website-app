@@ -3,39 +3,35 @@
 import { useEffect, useRef, useState } from "react";
 
 import SoundPad from "@/components/SoundPad";
+import { useMemo } from "react";
 
 export default function SoundBoard() {
-  const sounds = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    label: `Pad ${i + 1}`,
-    src: `/sounds/sound${i + 1}.wav`,
-  }));
+  const padColors = ["#41e9a4", "#7b8cec", "#9c3aca", "#e51d95", "#3b82f6"];
 
-  const [isPlaying, setIsPlaying] = useState(Array(9).fill(false));
+  const sounds = useMemo(() => {
+    return Array.from({ length: 9 }, (_, i) => ({
+      id: i,
+      label: `Pad ${i + 1}`,
+      src: `/sounds/sound${i + 1}.wav`,
+      color: padColors[i] ? padColors[i] : padColors[i - padColors.length],
+    }));
+  }, []);
 
-  const handleOnIsPlaying = (playing: boolean, id: number) => {
-    setIsPlaying((prev) => {
-      const newState = [...prev];
-      newState[id - 1] = playing;
-      return newState;
-    });
-  };
+  const [activeBlinkId, setActiveBlinkId] = useState<number | null>(null);
+
+  const runningIds = [0, 1, 2, 5, 4, 3, 6, 7, 8];
+  const indexRef = useRef(0);
 
   useEffect(() => {
-    const anyPlaying = isPlaying.some((playing) => playing);
+    const interval = setInterval(() => {
+      console.log("interval");
+      const currentId = runningIds[indexRef.current];
+      setActiveBlinkId(currentId);
+      indexRef.current = (indexRef.current + 1) % runningIds.length;
+    }, 150);
 
-    if (anyPlaying) {
-      console.log("At least one sound is playing");
-      // Show running light animation
-    } else {
-      console.log("No sounds are playing");
-      // Hide running light animation
-    }
-  }, [isPlaying]); // This effect runs whenever isPlaying array changes
-
-  //if 0 soundpad is playing music, then show running light animation
-
-  //animation: blink egymas utan the pads
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -50,7 +46,8 @@ export default function SoundBoard() {
                     id={sounds[rowIndex * 3 + colIndex].id}
                     label={sounds[rowIndex * 3 + colIndex].label}
                     soundSrc={sounds[rowIndex * 3 + colIndex].src}
-                    onIsPlaying={handleOnIsPlaying}
+                    color={sounds[rowIndex * 3 + colIndex].color}
+                    isActiveBlink={activeBlinkId === sounds[rowIndex * 3 + colIndex].id}
                   />
                 </div>
               ))}
@@ -61,3 +58,18 @@ export default function SoundBoard() {
     </>
   );
 }
+/* 
+                    isActiveBlink={activeBlinkId === sounds[rowIndex * 3 + colIndex].id}
+
+                    onIsPlaying={handleOnIsPlaying}
+
+*/
+
+//running light animation:
+/* 
+we need an array with the order of the blinking pads
+create a variable called activeBlink
+create a function to assign the value to activeBlinkId (setInterval + loop through the array)
+forward active blink to the SoundPad component if activeBlinkId eq to Soundpad id
+in the Soundpad component, add color class to the button based on activeBlinkId
+*/

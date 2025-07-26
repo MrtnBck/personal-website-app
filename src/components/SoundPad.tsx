@@ -3,17 +3,21 @@ import { Howl } from "howler";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 
+import React from "react";
+
 interface SoundPadProps {
   soundSrc: string;
   label: string;
   id: number;
+  color: string;
   onIsPlaying: (isPlaying: boolean, id: number) => void;
+  isActiveBlink: boolean;
 }
 
-export default function SoundPad({ soundSrc, label, id, onIsPlaying }: SoundPadProps) {
-  const soundRef = useRef<Howl | null>(null);
+export default React.memo(function SoundPad({ soundSrc, color, id, onIsPlaying, isActiveBlink }: SoundPadProps) {
+  console.error("soundpad component rerenders");
 
-  let disabled = false;
+  const soundRef = useRef<Howl | null>(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -22,19 +26,13 @@ export default function SoundPad({ soundSrc, label, id, onIsPlaying }: SoundPadP
       src: [soundSrc],
       preload: true,
       onplay: () => {
-        disabled = true;
         setIsPlaying(true);
-        onIsPlaying(true, id);
       },
       onend: () => {
-        disabled = false;
         setIsPlaying(false);
-        onIsPlaying(false, id);
       },
       onstop: () => {
-        disabled = false;
         setIsPlaying(false);
-        onIsPlaying(false, id);
       },
     });
 
@@ -44,17 +42,20 @@ export default function SoundPad({ soundSrc, label, id, onIsPlaying }: SoundPadP
   }, [soundSrc, id]);
 
   const handlePlay = () => {
-    if (disabled) return;
+    if (isPlaying) return;
     soundRef.current?.play();
   };
 
   return (
     <button
       onClick={handlePlay}
-      className={`cursor-pointer  hover:bg-emerald text-white font-bold w-full h-full rounded-xs ${
+      className={`cursor-pointer bg-secondary  hover:bg-emerald text-background font-bold w-full h-full rounded-xs ${
         isPlaying ? "cursor-not-allowed bg-emerald" : "bg-secondary"
       }`}
       disabled={isPlaying}
-    ></button>
+      style={{ backgroundColor: isActiveBlink ? color : "" }}
+    >
+      {id}
+    </button>
   );
-}
+});
