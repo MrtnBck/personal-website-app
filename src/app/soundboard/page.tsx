@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 
+import { Icon } from "@iconify/react";
+
 import { useToneSoundboard } from "@/hooks/useToneSoundboard";
 import SoundPad from "@/components/SoundPad";
 
@@ -85,31 +87,45 @@ export default function SoundBoard() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full h-full ">
-        <h3>Feeling creative? Try my SoundBoard</h3>
-        <div className="mt-2">
-          {Array.from({ length: 3 }, (_, rowIndex) => (
-            <div key={rowIndex} className={`w-full h-[50px] flex ${rowIndex > 0 ? "mt-[4px]" : ""}`}>
-              {Array.from({ length: 3 }, (_, colIndex) => (
-                <div key={colIndex} className={`h-[50px] w-[50px] relative z-10 ${colIndex > 0 ? "ml-[4px]" : ""}`}>
-                  <SoundPad
-                    id={pads[rowIndex * 3 + colIndex].id}
-                    soundSrc={pads[rowIndex * 3 + colIndex].src}
-                    color={pads[rowIndex * 3 + colIndex].color}
-                    isActiveBlink={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
-                    isActive={activePads.has(pads[rowIndex * 3 + colIndex].id)}
-                    onPush={() => {
-                      onPushHandler(pads[rowIndex * 3 + colIndex].id);
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
+      <div className="flex flex-col items-center justify-center min-w-min text-secondary">
+        <h3 className="mb-2 text-center">
+          Feeling creative?
+          <br />
+          Try my Soundboard
+        </h3>
+        <div>
+          <div className="flex justify-end">
+            <button
+              className={`cursor-pointer text-secondary ${
+                activePads.size === 0 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={onStopHandler}
+              disabled={activePads.size === 0}
+            >
+              <Icon icon="ic:baseline-replay" className="h-6 w-6 bg-transparent " />
+            </button>
+          </div>
+          <div className="mt-2">
+            {Array.from({ length: 3 }, (_, rowIndex) => (
+              <div key={rowIndex} className={`w-full h-[50px] flex ${rowIndex > 0 ? "mt-[4px]" : ""}`}>
+                {Array.from({ length: 3 }, (_, colIndex) => (
+                  <div key={colIndex} className={`h-[50px] w-[50px] relative z-10 ${colIndex > 0 ? "ml-[4px]" : ""}`}>
+                    <SoundPad
+                      id={pads[rowIndex * 3 + colIndex].id}
+                      soundSrc={pads[rowIndex * 3 + colIndex].src}
+                      color={pads[rowIndex * 3 + colIndex].color}
+                      isActiveBlink={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
+                      isActive={activePads.has(pads[rowIndex * 3 + colIndex].id)}
+                      onPush={() => {
+                        onPushHandler(pads[rowIndex * 3 + colIndex].id);
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-        <button className="mt-6 bg-secondary " onClick={onStopHandler}>
-          Stop All
-        </button>
       </div>
     </>
   );

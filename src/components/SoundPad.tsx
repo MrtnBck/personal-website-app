@@ -14,7 +14,7 @@ export default memo(function SoundPad({ color, id, isActiveBlink, onPush, isActi
   return (
     <motion.button
       onClick={onPush}
-      className={`cursor-pointer font-bold w-full h-full rounded-xs text-transparent`}
+      className={`cursor-pointer opacity-75 hover:opacity-100 font-bold w-full h-full rounded-xs text-transparent`}
       animate={{
         backgroundColor: isActiveBlink || isActive ? color : "var(--color-secondary)",
       }}
