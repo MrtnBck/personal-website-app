@@ -15,7 +15,10 @@ export default function SoundBoard() {
     }));
   }, []);
 
+  const [activePads, setActivePads] = useState<Set<number>>(new Set());
+
   const [activeBlinkId, setActiveBlinkId] = useState<number | null>(null);
+
   const indexRef = useRef(0);
 
   const restartRunningBlinkTimeout = 1500; // [ms]
@@ -25,7 +28,17 @@ export default function SoundBoard() {
   const onPushHandler = async (id: number) => {
     runningBlinkHandler("stop");
 
-    await togglePad(id);
+    const result = await togglePad(id);
+
+    setActivePads((prev) => {
+      const newSet = new Set(prev);
+      if (result === "started") {
+        newSet.add(id);
+      } else if (result === "stopped") {
+        newSet.delete(id);
+      }
+      return newSet;
+    });
 
     const isAllStopped = checkIfAllSoundsStopped();
     if (isAllStopped) {
@@ -37,6 +50,7 @@ export default function SoundBoard() {
 
   const onStopHandler = () => {
     stopAll();
+    setActivePads(new Set());
 
     setTimeout(() => {
       runningBlinkHandler("start");
@@ -83,10 +97,10 @@ export default function SoundBoard() {
                     soundSrc={pads[rowIndex * 3 + colIndex].src}
                     color={pads[rowIndex * 3 + colIndex].color}
                     isActiveBlink={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
+                    isActive={activePads.has(pads[rowIndex * 3 + colIndex].id)}
                     onPush={() => {
                       onPushHandler(pads[rowIndex * 3 + colIndex].id);
                     }}
-                    isActive={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
                   />
                 </div>
               ))}
@@ -103,9 +117,9 @@ export default function SoundBoard() {
 
 /* 
 TODO:
-- running light animation is active when soundpad is idle (not active for 3 min seconds)
-- if user clicks on soundpad, it should stop the running light animation and play the sound looped. This time the pad has the bg color.
-- the user clicks on the pad again to stop the sound and the running light animation starts again after 3 seconds.
-- simultaneously more than one sound can be played
-- we have a dedicated button to stop all sounds
+DONE - running light animation is active when soundpad is idle (not active for 3 seconds)
+DONE - if user clicks on soundpad, it should stop the running light animation and play the sound looped. This time the pad has the bg color.
+DONE - the user clicks on the pad again to stop the sound and the running light animation starts again after 3 seconds.
+DONE - simultaneously more than one sound can be played
+DONE - we have a dedicated button to stop all sounds
 */

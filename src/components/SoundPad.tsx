@@ -1,5 +1,4 @@
-import { useState, memo } from "react";
-
+import { memo } from "react";
 import { motion } from "framer-motion";
 
 interface SoundPadProps {
@@ -11,17 +10,10 @@ interface SoundPadProps {
   onPush: () => void;
 }
 
-export default memo(function SoundPad({ color, id, isActiveBlink, onPush }: SoundPadProps) {
-  const [isActive, setIsActive] = useState(false);
-
-  const onClickHandler = () => {
-    onPush();
-    setIsActive((prev) => !prev);
-  };
-
+export default memo(function SoundPad({ color, id, isActiveBlink, onPush, isActive }: SoundPadProps) {
   return (
     <motion.button
-      onClick={onClickHandler}
+      onClick={onPush}
       className={`cursor-pointer font-bold w-full h-full rounded-xs text-transparent`}
       animate={{
         backgroundColor: isActiveBlink || isActive ? color : "var(--color-secondary)",
