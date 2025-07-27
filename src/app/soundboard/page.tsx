@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 
 import { useToneSoundboard } from "@/hooks/useToneSoundboard";
 import SoundPad from "@/components/SoundPad";
@@ -18,20 +18,56 @@ export default function SoundBoard() {
   const [activeBlinkId, setActiveBlinkId] = useState<number | null>(null);
   const indexRef = useRef(0);
 
-  const { togglePad, stopAll } = useToneSoundboard(pads);
+  const restartRunningBlinkTimeout = 1500; // [ms]
 
-  //tone implmementation
+  const { togglePad, stopAll, checkIfAllSoundsStopped } = useToneSoundboard(pads);
+
+  const onPushHandler = async (id: number) => {
+    runningBlinkHandler("stop");
+
+    await togglePad(id);
+
+    const isAllStopped = checkIfAllSoundsStopped();
+    if (isAllStopped) {
+      setTimeout(() => {
+        runningBlinkHandler("start");
+      }, restartRunningBlinkTimeout);
+    }
+  };
+
+  const onStopHandler = () => {
+    stopAll();
+
+    setTimeout(() => {
+      runningBlinkHandler("start");
+    }, restartRunningBlinkTimeout);
+  };
+
+  const runningBlinkIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const runningBlinkHandler = useCallback((use: "start" | "stop") => {
+    const runningIds = [0, 1, 2, 5, 4, 3, 6, 7, 8];
+    if (use === "start") {
+      indexRef.current = 0;
+      runningBlinkIntervalRef.current = setInterval(() => {
+        const currentId = runningIds[indexRef.current];
+        setActiveBlinkId(currentId);
+        indexRef.current = (indexRef.current + 1) % runningIds.length;
+      }, 150);
+    } else {
+      if (runningBlinkIntervalRef.current) {
+        clearInterval(runningBlinkIntervalRef.current);
+        runningBlinkIntervalRef.current = null;
+        setActiveBlinkId(null);
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    const runningIds = [0, 1, 2, 5, 4, 3, 6, 7, 8];
-    const interval = setInterval(() => {
-      const currentId = runningIds[indexRef.current];
-      setActiveBlinkId(currentId);
-      indexRef.current = (indexRef.current + 1) % runningIds.length;
-    }, 150);
+    runningBlinkHandler("start");
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => runningBlinkHandler("stop");
+  }, [runningBlinkHandler]);
 
   return (
     <>
@@ -48,7 +84,7 @@ export default function SoundBoard() {
                     color={pads[rowIndex * 3 + colIndex].color}
                     isActiveBlink={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
                     onPush={() => {
-                      togglePad(pads[rowIndex * 3 + colIndex].id);
+                      onPushHandler(pads[rowIndex * 3 + colIndex].id);
                     }}
                     isActive={activeBlinkId === pads[rowIndex * 3 + colIndex].id}
                   />
@@ -57,7 +93,7 @@ export default function SoundBoard() {
             </div>
           ))}
         </div>
-        <button className="mt-6 bg-secondary " onClick={stopAll}>
+        <button className="mt-6 bg-secondary " onClick={onStopHandler}>
           Stop All
         </button>
       </div>

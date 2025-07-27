@@ -1,4 +1,6 @@
-import React from "react";
+import { useState, memo } from "react";
+
+import { motion } from "framer-motion";
 
 interface SoundPadProps {
   id: number;
@@ -9,16 +11,27 @@ interface SoundPadProps {
   onPush: () => void;
 }
 
-export default React.memo(function SoundPad({ color, id, isActiveBlink, onPush, isActive }: SoundPadProps) {
+export default memo(function SoundPad({ color, id, isActiveBlink, onPush }: SoundPadProps) {
+  const [isActive, setIsActive] = useState(false);
+
+  const onClickHandler = () => {
+    onPush();
+    setIsActive((prev) => !prev);
+  };
+
   return (
-    <button
-      onClick={onPush}
-      className={`cursor-pointer bg-secondary  hover:bg-emerald text-background font-bold w-full h-full rounded-xs ${
-        isActive ? "cursor-not-allowed bg-emerald" : "bg-secondary"
-      }`}
-      style={{ backgroundColor: isActiveBlink ? color : "" }}
+    <motion.button
+      onClick={onClickHandler}
+      className={`cursor-pointer font-bold w-full h-full rounded-xs text-transparent`}
+      animate={{
+        backgroundColor: isActiveBlink || isActive ? color : "var(--color-secondary)",
+      }}
+      transition={{
+        duration: 0.2,
+        ease: "easeInOut",
+      }}
     >
       {id}
-    </button>
+    </motion.button>
   );
 });

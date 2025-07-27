@@ -27,7 +27,7 @@ export function useToneSoundboard(pads: PadConfig[]) {
     };
   }, [pads]);
 
-  const togglePad = async (id: number) => {
+  const togglePad = async (id: number): Promise<"started" | "stopped" | undefined> => {
     if (Tone.getContext().state !== "running") {
       await Tone.start();
     }
@@ -40,9 +40,13 @@ export function useToneSoundboard(pads: PadConfig[]) {
     if (player.state === "started") {
       player.stop();
       //console.log("Stopping sound:", id);
+
+      return "stopped";
     } else {
       player.loop = true;
       player.start();
+
+      return "started";
       //console.log("Playing sound with loop enabled:", id);
     }
   };
@@ -59,5 +63,23 @@ export function useToneSoundboard(pads: PadConfig[]) {
     });
   };
 
-  return { togglePad, stopAll };
+  const checkIfSoundIsPlayingById = (id: number): boolean => {
+    const players = playersRef.current;
+    if (!players) return false;
+
+    const player = players.player(id.toString());
+    return player.state === "started";
+  };
+
+  const checkIfAllSoundsStopped = (): boolean => {
+    const players = playersRef.current;
+    if (!players) return true;
+
+    return pads.every((pad) => {
+      const player = players.player(pad.id.toString());
+      return player.state !== "started";
+    });
+  };
+
+  return { togglePad, stopAll, checkIfSoundIsPlayingById, checkIfAllSoundsStopped };
 }
