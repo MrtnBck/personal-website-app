@@ -2,16 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import SoundPad from "@/components/SoundPad";
+//import SoundPad from "@/components/SoundPad_howler";
 import { useMemo } from "react";
+
+import { useToneSoundboard } from "@/hooks/useToneSoundboard";
 
 export default function SoundBoard() {
   const padColors = ["#41e9a4", "#7b8cec", "#9c3aca", "#e51d95", "#3b82f6"];
 
-  const sounds = useMemo(() => {
+  // const sounds = useMemo(() => {
+  //   return Array.from({ length: 9 }, (_, i) => ({
+  //     id: i,
+  //     label: `Pad ${i + 1}`,
+  //     src: `/sounds/sound${i + 1}.wav`,
+  //     color: padColors[i] ? padColors[i] : padColors[i - padColors.length],
+  //   }));
+  // }, []);
+
+  const pads = useMemo(() => {
     return Array.from({ length: 9 }, (_, i) => ({
       id: i,
-      label: `Pad ${i + 1}`,
       src: `/sounds/sound${i + 1}.wav`,
       color: padColors[i] ? padColors[i] : padColors[i - padColors.length],
     }));
@@ -21,6 +31,9 @@ export default function SoundBoard() {
 
   const runningIds = [0, 1, 2, 5, 4, 3, 6, 7, 8];
   const indexRef = useRef(0);
+
+  //tone implmementation
+  const { togglePad, stopAll } = useToneSoundboard(pads);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,34 +55,44 @@ export default function SoundBoard() {
             <div key={rowIndex} className={`w-full h-[50px] flex ${rowIndex > 0 ? "mt-[4px]" : ""}`}>
               {Array.from({ length: 3 }, (_, colIndex) => (
                 <div key={colIndex} className={`h-[50px] w-[50px] relative z-10 ${colIndex > 0 ? "ml-[4px]" : ""}`}>
-                  <SoundPad
+                  <button
+                    key={pads[rowIndex * 3 + colIndex].id}
+                    className="w-16 h-16 mx-1 rounded bg-blue-500 hover:bg-blue-600 text-white"
+                    onClick={() => {
+                      togglePad(pads[rowIndex * 3 + colIndex].id);
+                    }}
+                  ></button>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <button className="mt-6 bg-secondary " onClick={stopAll}>
+          Stop All
+        </button>
+      </div>
+    </>
+  );
+}
+
+/* 
+  <SoundPad
                     id={sounds[rowIndex * 3 + colIndex].id}
                     label={sounds[rowIndex * 3 + colIndex].label}
                     soundSrc={sounds[rowIndex * 3 + colIndex].src}
                     color={sounds[rowIndex * 3 + colIndex].color}
                     isActiveBlink={activeBlinkId === sounds[rowIndex * 3 + colIndex].id}
                   />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-}
-/* 
-                    isActiveBlink={activeBlinkId === sounds[rowIndex * 3 + colIndex].id}
-
-                    onIsPlaying={handleOnIsPlaying}
 
 */
 
-//running light animation:
 /* 
-we need an array with the order of the blinking pads
-create a variable called activeBlink
-create a function to assign the value to activeBlinkId (setInterval + loop through the array)
-forward active blink to the SoundPad component if activeBlinkId eq to Soundpad id
-in the Soundpad component, add color class to the button based on activeBlinkId
+TODO:
+- running light animation is active when soundpad is idle (not active for 3 min seconds)
+- if user clicks on soundpad, it should stop the running light animation and play the sound looped. This time the pad has the bg color.
+- the user clicks on the pad again to stop the sound and the running light animation starts again after 3 seconds.
+- simultaneously more than one sound can be played
+- we have a dedicated button to stop all sounds
+
+
 */

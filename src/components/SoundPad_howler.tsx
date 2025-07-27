@@ -15,7 +15,7 @@ interface SoundPadProps {
 }
 
 export default React.memo(function SoundPad({ soundSrc, color, id, onIsPlaying, isActiveBlink }: SoundPadProps) {
-  console.error("soundpad component rerenders");
+  //console.error("soundpad component rerenders");
 
   const soundRef = useRef<Howl | null>(null);
 
