@@ -28,8 +28,7 @@ export function useToneSoundboard(pads: PadConfig[]) {
   }, [pads]);
 
   const togglePad = async (id: number) => {
-    // Start audio context on first user interaction
-    if (Tone.context.state !== "running") {
+    if (Tone.getContext().state !== "running") {
       await Tone.start();
     }
 
@@ -40,20 +39,18 @@ export function useToneSoundboard(pads: PadConfig[]) {
 
     if (player.state === "started") {
       player.stop();
-      console.log("Stopping sound:", id);
+      //console.log("Stopping sound:", id);
     } else {
       player.loop = true;
       player.start();
-      console.log("Playing sound with loop enabled:", id);
+      //console.log("Playing sound with loop enabled:", id);
     }
   };
 
   const stopAll = () => {
-    debugger;
     const players = playersRef.current;
     if (!players) return;
 
-    // Stop all players
     pads.forEach((pad) => {
       const player = players.player(pad.id.toString());
       if (player.state === "started") {
