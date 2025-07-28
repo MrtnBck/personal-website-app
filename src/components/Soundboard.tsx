@@ -23,9 +23,9 @@ export default function SoundBoard() {
 
   const indexRef = useRef(0);
 
-  const restartRunningBlinkTimeout = 1500; // [ms]
+  const startRunningBlinkTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const { togglePad, stopAll, checkIfAllSoundsStopped } = useToneSoundboard(pads);
+  const { togglePad, stopAll } = useToneSoundboard(pads);
 
   const onPushHandler = async (id: number) => {
     runningBlinkHandler("stop");
@@ -41,22 +41,11 @@ export default function SoundBoard() {
       }
       return newSet;
     });
-
-    const isAllStopped = checkIfAllSoundsStopped();
-    if (isAllStopped) {
-      setTimeout(() => {
-        runningBlinkHandler("start");
-      }, restartRunningBlinkTimeout);
-    }
   };
 
   const onStopHandler = () => {
     stopAll();
     setActivePads(new Set());
-
-    setTimeout(() => {
-      runningBlinkHandler("start");
-    }, restartRunningBlinkTimeout);
   };
 
   const runningBlinkIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -80,16 +69,28 @@ export default function SoundBoard() {
   }, []);
 
   useEffect(() => {
-    runningBlinkHandler("start");
+    if (startRunningBlinkTimeout.current) {
+      clearTimeout(startRunningBlinkTimeout.current);
+      startRunningBlinkTimeout.current = null;
+    }
 
-    return () => runningBlinkHandler("stop");
-  }, [runningBlinkHandler]);
+    if (activePads.size > 0) {
+      runningBlinkHandler("stop");
+    } else {
+      startRunningBlinkTimeout.current = setTimeout(() => {
+        runningBlinkHandler("start");
+        startRunningBlinkTimeout.current = null;
+      }, 1500); // Start running light animation after 1.5 seconds of inactivity
+    }
 
-  /* <h3 className="mb-2 text-center">
-          Feeling creative?
-          <br />
-          Try my Soundboard
-        </h3> */
+    return () => {
+      runningBlinkHandler("stop");
+      if (startRunningBlinkTimeout.current) {
+        clearTimeout(startRunningBlinkTimeout.current);
+        startRunningBlinkTimeout.current = null;
+      }
+    };
+  }, [runningBlinkHandler, activePads.size]);
 
   return (
     <>
@@ -139,4 +140,6 @@ DONE - if user clicks on soundpad, it should stop the running light animation an
 DONE - the user clicks on the pad again to stop the sound and the running light animation starts again after 3 seconds.
 DONE - simultaneously more than one sound can be played
 DONE - we have a dedicated button to stop all sounds
+
+
 */

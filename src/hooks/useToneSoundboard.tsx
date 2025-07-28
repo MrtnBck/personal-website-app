@@ -63,23 +63,24 @@ export function useToneSoundboard(pads: PadConfig[]) {
     });
   };
 
-  const checkIfSoundIsPlayingById = (id: number): boolean => {
-    const players = playersRef.current;
-    if (!players) return false;
+  //DEV NOTE: not in used at the moment, but can be useful later
+  // const checkIfSoundIsPlayingById = (id: number): boolean => {
+  //   const players = playersRef.current;
+  //   if (!players) return false;
 
-    const player = players.player(id.toString());
-    return player.state === "started";
-  };
+  //   const player = players.player(id.toString());
+  //   return player.state === "started";
+  // };
 
-  const checkIfAllSoundsStopped = (): boolean => {
-    const players = playersRef.current;
-    if (!players) return true;
+  // const checkIfAllSoundsStopped = (): boolean => {
+  //   const players = playersRef.current;
+  //   if (!players) return true;
 
-    return pads.every((pad) => {
-      const player = players.player(pad.id.toString());
-      return player.state !== "started";
-    });
-  };
+  //   return pads.every((pad) => {
+  //     const player = players.player(pad.id.toString());
+  //     return player.state !== "started";
+  //   });
+  // };
 
-  return { togglePad, stopAll, checkIfSoundIsPlayingById, checkIfAllSoundsStopped };
+  return { togglePad, stopAll /* checkIfSoundIsPlayingById, checkIfAllSoundsStopped */ };
 }
