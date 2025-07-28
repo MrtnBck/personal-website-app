@@ -12,7 +12,7 @@ export default function SoundBoard() {
     const padColors = ["#41e9a4", "#7b8cec", "#9c3aca", "#e51d95", "#3b82f6"];
     return Array.from({ length: 9 }, (_, i) => ({
       id: i,
-      src: `/sounds/sound${i + 1}.wav`,
+      src: `/sounds/sound${i + 1}.mp3`,
       color: padColors[i] ? padColors[i] : padColors[i - padColors.length],
     }));
   }, []);
