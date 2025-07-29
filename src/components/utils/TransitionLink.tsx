@@ -16,7 +16,10 @@ export default function TransitionLink({ children, href, ...props }: TransitionL
   const handleTransition = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     //call onToggleMenu in the parent component
-    props.onToggleMenu?.();
+
+    if (props.onToggleMenu) {
+      props.onToggleMenu?.();
+    }
 
     const transitionContent = document.querySelector("#transition-content");
     transitionContent?.classList.add("page-transition");

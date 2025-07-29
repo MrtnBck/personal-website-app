@@ -1,6 +1,36 @@
 import Image from "next/image";
 
+import MenuItem from "@/components/MenuItem";
+
 export default function Home() {
+  const menuItems = [
+    {
+      icon: "f7:wrench-fill",
+      label: "Skills",
+      description:
+        "My technical skills My technical skills My technical skills My technical skills My technical skills My technical skills",
+      href: "/skills",
+    },
+    {
+      icon: "tdesign:education-filled",
+      label: "Education",
+      description: "My educational background",
+      href: "/education",
+    },
+    {
+      icon: "streamline-ultimate:team-meeting-bold",
+      label: "Experiences",
+      description: "My professional experiences",
+      href: "/experiences",
+    },
+    {
+      icon: "mdi:connection",
+      label: "Contact",
+      description: "Get in touch with me",
+      href: "/contact",
+    },
+  ];
+
   return (
     <>
       <div className="container mx-auto px-4">
@@ -98,6 +128,18 @@ export default function Home() {
           <p className="mb-4 font-space-grotesk text-secondary">
             Have I mentioned that learning and growth are my passions?
           </p>
+
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 ">
+            {menuItems.map((item) => (
+              <MenuItem
+                key={item.label}
+                icon={item.icon}
+                label={item.label}
+                description={item.description}
+                href={item.href}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
