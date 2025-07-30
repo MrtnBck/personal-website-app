@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased overflow-x-hidden`}>
         <FloatingBackground />
-        <main className="relative z-11 mb-10 overflow-hidden">
+        <main className="relative z-11 mb-10 overflow-hidden px-4 md:px-8 max-w-6xl mx-auto">
           <ScrollHideNavbar />
           <div id="transition-content">
             <div className="mt-13 flex justify-end px-4 ">
