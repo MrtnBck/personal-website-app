@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 interface TransitionLinkProps {
   children: React.ReactNode;
@@ -12,6 +12,8 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function TransitionLink({ children, href, ...props }: TransitionLinkProps) {
   const router = useRouter();
+  const pathName = usePathname();
+  console.log(router);
 
   const handleTransition = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -37,7 +39,14 @@ export default function TransitionLink({ children, href, ...props }: TransitionL
   };
 
   return (
-    <Link onClick={handleTransition} href={href} {...props}>
+    <Link
+      onClick={handleTransition}
+      href={href}
+      {...props}
+      className={`${pathName === href ? " text-blue font-bold" : "text-primary-dark"} hover:text-primary-dark-hover ${
+        props.className
+      }`}
+    >
       {children}
     </Link>
   );

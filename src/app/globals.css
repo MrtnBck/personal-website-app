@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --color-primary-light: var(--foreground);
   --color-primary-dark: var(--background);
+  --color-primary-dark-hover: #333;
   --color-secondary: #909090;
   --color-tertiary: #1a1a1a;
   --color-emerald: #41e9a4;
