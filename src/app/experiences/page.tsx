@@ -5,6 +5,7 @@ export default function Experiences() {
     {
       year: "2022-2025",
       company: "Lobo Software",
+      logoPath: "/logo-lobo.webp",
       position: "Frontend Developer",
       description: "",
       location: "Vienna, Austria",
@@ -47,6 +48,7 @@ export default function Experiences() {
     {
       year: "2018-2021",
       company: "Baker Hughes, a GE company",
+      logoPath: "/logo-bhge.png",
       position: "Human Machine Interface Engineer Intern",
       description:
         "Human Machine Interface Engineer Internkent a tanulmanyaim mellett gyakornokkent dolgoztam ennel a cegnel ahol goz es gazturbinas eromuvek gepeinek adatvizualizaciojan es iranyitasanak modernizaciojaban es boviteseben vettem reszt.",
@@ -63,8 +65,8 @@ export default function Experiences() {
   ];
 
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="text-2xl font-bold mt-8 mb-4">Experiences</h2>
+    <div className="">
+      <h2 className="text-2xl font-bold mt-8 mb-8">Experiences</h2>
       <ul className="list-disc">
         {experiences.map((experience) => (
           <ExperienceItem key={Math.random() * 10000} experience={experience} />
