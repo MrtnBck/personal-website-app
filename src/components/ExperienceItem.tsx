@@ -18,7 +18,7 @@ type EducationItemProps = {
 
 export default function ExperienceItem({ experience }: { experience: EducationItemProps }) {
   return (
-    <li className="text-center md:text-left flex flex-col gap-2 md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 mb-24 border-b border-secondary pb-12 last:mb-0 last:border-b-0 last:pb-0 mad:last:border-b-1">
+    <li className="text-center md:text-left flex flex-col gap-2 md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 mb-24 border-b border-secondary pb-12 last:mb-0 last:border-b-0  md:last:border-b-1">
       <div className="flex flex-col items-center md:flex-row justify-between md:items-start">
         <div className="">
           <h1 className="text-2xl md:text-3xl mb-4 font-semibold ">{experience.position}</h1>
@@ -31,24 +31,22 @@ export default function ExperienceItem({ experience }: { experience: EducationIt
         </div>
       </div>
       <div className="">
-        <div className="mb-24">
-          <h5 className="text-xl md:text-2xl font-semibold mt-5 mb-3">
-            Responsibilities<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
-          </h5>
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {experience.responsibilities.map((responsibility, index) => (
-              <li
-                key={index}
-                className="text-sm sm:text-base list-none text-center   bg-secondary/20 rounded-lg p-6 hover:scale-105 transition-transform"
-              >
-                {responsibility}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <h5 className="text-xl md:text-2xl font-semibold mt-12 mb-4">
+          Responsibilities<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
+        </h5>
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {experience.responsibilities.map((responsibility, index) => (
+            <li
+              key={index}
+              className="text-sm sm:text-base list-none text-center   bg-secondary/20 rounded-lg p-6 hover:scale-105 transition-transform"
+            >
+              {responsibility}
+            </li>
+          ))}
+        </ul>
         {experience.projects.length > 0 && (
           <div className="">
-            <h5 className="text-xl md:text-2xl font-semibold mt-5 mb-3">
+            <h5 className="text-xl md:text-2xl font-semibold mt-12 mb-4">
               Some Projects<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
             </h5>
             <ul className="grid grid-cols-1  lg:grid-cols-2 gap-6">
