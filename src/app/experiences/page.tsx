@@ -66,7 +66,7 @@ export default function Experiences() {
 
   return (
     <div className="">
-      <h2 className="text-4xl text-center font-bold mt-8 mb-16">Experiences</h2>
+      <h1 className="text-center mt-8 mb-16">Experiences</h1>
       <ul className="list-disc">
         {experiences.map((experience) => (
           <ExperienceItem key={experience.company} experience={experience} />

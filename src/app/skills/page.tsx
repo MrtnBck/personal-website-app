@@ -179,12 +179,12 @@ export default function Skills() {
 
   return (
     <>
-      <h2 className="text-4xl font-bold mt-8 mb-8">Skills</h2>
+      <h1 className="text-center mt-8 mb-8">Skills</h1>
 
       {/* Frontend Development Section */}
       <section className="flex flex-col text-center mb-12">
         <div className="md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 flex flex-col items-center">
-          <h3 className="text-2xl mb-6">Frontend Development</h3>
+          <h2 className=" mb-6">Frontend Development</h2>
           <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
             {frontendSkills.map((skillGroup) => (
               <SkillCard
@@ -201,7 +201,7 @@ export default function Skills() {
       {/* Backend Development Section */}
       <section className="flex flex-col text-center mb-12">
         <div className="md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 flex flex-col items-center">
-          <h3 className="text-2xl mb-6">Backend Development</h3>
+          <h2 className="mb-6">Backend Development</h2>
           <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
             {backendSkills.map((skillGroup) => (
               <SkillCard
@@ -218,7 +218,7 @@ export default function Skills() {
       {/* Others Section */}
       <section className="flex flex-col text-center mb-12">
         <div className="md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 flex flex-col items-center">
-          <h3 className="text-2xl mb-6">Tooling & DevOps & Others</h3>
+          <h2 className="mb-6">Tooling & DevOps & Others</h2>
           <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
             {toolsDevOpsOthers.map((skillGroup) => (
               <SkillCard

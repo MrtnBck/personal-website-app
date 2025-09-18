@@ -61,10 +61,10 @@ export default function LocationLiveStatus() {
 
   return (
     <div>
-      <p className="text-sm font-semibold">
+      <p className="font-semibold">
         Based in Vienna, Austria <span>🇦🇹</span>
       </p>
-      <p className="text-xs text-end font-space-grotesk text-secondary">
+      <p className="text-sm text-end font-space-grotesk text-secondary">
         {time} {gmt}, {temperature !== null ? `${temperature > 0 ? "+" : ""}${temperature}°C` : "Loading..."}
       </p>
     </div>

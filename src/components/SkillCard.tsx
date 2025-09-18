@@ -23,7 +23,7 @@ export default function SkillCard({ skills, title, category }: SkillCardProps) {
 
   return (
     <div className="w-full max-w-sm border border-secondary rounded-lg p-4 min-h-128">
-      <h4 className="text-xl mb-4 text-secondary font-space-grotesk">{title === "All" ? "" : title}</h4>
+      <h3 className="mb-4 ">{title === "All" ? "" : title}</h3>
       <ul className="list-disc list-inside">
         {skillsMap[category]?.map((item) => (
           <SkillItem key={item.label} item={item} />

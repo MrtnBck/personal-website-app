@@ -53,10 +53,10 @@ export default function Home() {
         />
 
         <div className="mt-10 relative z-10 w-full">
-          <h2 className="text-xl font-medium italic">Web Developer</h2>
-          <h3 className="font-space-grotesk text-secondary text-base font-medium">
+          <h3 className="italic">Web Developer</h3>
+          <h4 className="font-space-grotesk text-secondary text-base font-medium">
             I like progress, flow and creativity.
-          </h3>
+          </h4>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ export default function Home() {
       </div>
 
       <div className="mt-24 flex flex-col items-end">
-        <p className="mr-2 text-base mb-2">Highlights explained...</p>
+        <p className="mr-2 mb-2">Highlights explained...</p>
         <ul className="font-space-grotesk text-secondary text-sm">
           <li className="flex items-center mb-1">
             <span className="h-4 w-4 inline-block mr-2 bg-emerald rounded-full"></span>
@@ -117,8 +117,8 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      <h2 className="text-2xl mt-10 mb-4 ">My Story</h2>
-      <div className="text-base text-justify ">
+      <h2 className="mt-10 mb-4 ">My Story</h2>
+      <div className="text-justify ">
         <p className="mb-4">
           I began my academic journey in engineering in <span className=" text-indigo">Budapest</span>. I’ve always
           enjoyed viewing the world as a complex system, where different parts connect and influence each other. When I
