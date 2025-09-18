@@ -66,10 +66,10 @@ export default function Experiences() {
 
   return (
     <div className="">
-      <h2 className="text-2xl font-bold mt-8 mb-8">Experiences</h2>
+      <h2 className="text-4xl text-center font-bold mt-8 mb-16">Experiences</h2>
       <ul className="list-disc">
         {experiences.map((experience) => (
-          <ExperienceItem key={Math.random() * 10000} experience={experience} />
+          <ExperienceItem key={experience.company} experience={experience} />
         ))}
       </ul>
     </div>

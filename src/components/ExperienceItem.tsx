@@ -18,36 +18,48 @@ type EducationItemProps = {
 
 export default function ExperienceItem({ experience }: { experience: EducationItemProps }) {
   return (
-    <li className="flex flex-col gap-2 mb-14">
-      <div className="flex justify-between items-start">
-        <div>
-          <h4 className="text-3xl font-semibold mb-2">{experience.company}</h4>
-          <h3 className="text-2xl ">{experience.position}</h3>
-          <h5 className="text-xl font-space-grotesk text-secondary leading-tight mb-2">{experience.year}</h5>
-          <h4 className="text-xlfont-space-grotesk text-secondary leading-tight">{experience.location}</h4>
+    <li className="text-center md:text-left flex flex-col gap-2 md:border md:border-secondary md:rounded-lg md:p-4 lg:p-8 mb-24 border-b border-secondary pb-12 last:mb-0 last:border-b-0 last:pb-0 mad:last:border-b-1">
+      <div className="flex flex-col items-center md:flex-row justify-between md:items-start">
+        <div className="">
+          <h1 className="text-2xl md:text-3xl mb-4 font-semibold ">{experience.position}</h1>
+          <h4 className="text-xl md:text-2xl ">{experience.company}</h4>
+          <h5 className="text-lg md:text-xl font-space-grotesk text-secondary leading-tight">{experience.year}</h5>
+          <h4 className="text-lg md:text-xl font-space-grotesk text-secondary leading-tight">{experience.location}</h4>
         </div>
-        <div className="bg-foreground p-2  h-[100px] w-[100px] md:h-[150px] md:w-[150px] rounded-lg flex items-center justify-center">
+        <div className="mt-3.5 md:mt-0 md:ml-2 shrink-0 bg-foreground p-2  h-[100px] w-[100px] md:h-[150px] md:w-[150px] rounded-lg flex items-center justify-center">
           <Image src={`${experience.logoPath}`} alt={`logo-${experience.company}`} width={150} height={150} />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row md:space-between ">
-        <div className={` md:pr-2 ${experience.projects.length > 0 ? "md:w-1/2" : "md:w-full"}`}>
-          <h5 className=" text-base font-semibold mt-5 mb-3">Responsibilities</h5>
-          <ul className="">
+      <div className="">
+        <div className="mb-24">
+          <h5 className="text-xl md:text-2xl font-semibold mt-5 mb-3">
+            Responsibilities<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
+          </h5>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {experience.responsibilities.map((responsibility, index) => (
-              <li key={index} className="list-none mb-4 md:mb-6 text-justify py-2 bg-secondary/20 rounded-lg px-3">
+              <li
+                key={index}
+                className="text-sm sm:text-base list-none text-center   bg-secondary/20 rounded-lg p-6 hover:scale-105 transition-transform"
+              >
                 {responsibility}
               </li>
             ))}
           </ul>
         </div>
         {experience.projects.length > 0 && (
-          <div className="md:w-1/2 md:pl-2 ">
-            <h5 className="font-semibold mt-5 mb-3">Some Projects</h5>
-            <ul className="">
+          <div className="">
+            <h5 className="text-xl md:text-2xl font-semibold mt-5 mb-3">
+              Some Projects<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
+            </h5>
+            <ul className="grid grid-cols-1  lg:grid-cols-2 gap-6">
               {experience.projects.map((project, index) => (
-                <li key={index} className="list-none mb-4 md:mb-6 text-justify py-2 bg-secondary/20 rounded-lg px-3">
-                  <strong>{project.name}</strong>: {project.description.join(" ")}
+                <li
+                  key={index}
+                  className="list-none p-6 bg-secondary/20 rounded-lg hover:scale-105 transition-transform"
+                >
+                  {/* <strong>{project.name}</strong>: {project.description.join(" ")} */}
+                  <h4 className="text-lg md:text-xl mb-4 text-center ">{project.name}</h4>
+                  <p className="text-sm sm:text-base text-justify">{project.description.join(" ")}</p>
                 </li>
               ))}
             </ul>
