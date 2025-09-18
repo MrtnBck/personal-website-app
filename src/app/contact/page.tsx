@@ -54,44 +54,45 @@ export default function Contact() {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="text-2xl font-bold mt-8 mb-4">Contact</h2>
-      <p className="font-space-grotesk text-secondary text-center">
+    <div className="max-w-2xl mx-auto px-4">
+      <h1 className="text-center mt-8 mb-16">Contact</h1>
+      <h4 className="font-space-grotesk text-secondary text-center">
         Open to ideas, conversations, and new opportunities.
-      </p>
-      <h3 className="text-2xl mt-6 text-center mb-6">Get in touch!</h3>
-
-      <div className="mb-6">
-        <h4 className="text-xl font-bold">Email</h4>
-        <p className="text-base font-space-grotesk text-secondary">mbock996@gmail.com</p>
-      </div>
-      <div className="mb-6">
-        <h4 className="text-xl font-bold">LinkedIn</h4>
-        <a
-          href="https://linkedin.com/in/martinbock96"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-base font-space-grotesk text-secondary"
-        >
-          Link
-        </a>
-      </div>
-      <div className="mb-6">
-        <h4 className="text-xl font-bold">GitHub</h4>
-        <a
-          href="https://github.com/MrtnBck"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-base font-space-grotesk text-secondary"
-        >
-          Link
-        </a>
+      </h4>
+      <h3 className="text-center mt-20  mb-6">Get in touch</h3>
+      <div className="text-center md:text-left ">
+        <div className="mb-6">
+          <h4 className="">Email</h4>
+          <p className="tfont-space-grotesk text-secondary">mbock996@gmail.com</p>
+        </div>
+        <div className="mb-6">
+          <h4 className="">LinkedIn</h4>
+          <a
+            href="https://linkedin.com/in/martinbock96"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base font-space-grotesk text-secondary"
+          >
+            Link
+          </a>
+        </div>
+        <div className="mb-6">
+          <h4 className="">GitHub</h4>
+          <a
+            href="https://github.com/MrtnBck"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base font-space-grotesk text-secondary"
+          >
+            Link
+          </a>
+        </div>
       </div>
 
       <hr className="my-8 border-t border-secondary" />
 
       <div>
-        <h3 className="text-2xl mt-6 text-center mb-6">Send me an email here?</h3>
+        <h3 className="mt-6 text-center mb-6">Send me an email here</h3>
         <form className="flex flex-col max-w-md mx-auto" onSubmit={sendEmail}>
           <input
             type="email"

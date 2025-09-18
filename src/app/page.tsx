@@ -117,7 +117,9 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      <h2 className="mt-10 mb-4 ">My Story</h2>
+      <h2 className="mt-10 mb-4 ">
+        My Story<span className="h-2 w-2 rounded-full bg-emerald ml-1 inline-block"></span>
+      </h2>
       <div className="text-justify ">
         <p className="mb-4">
           I began my academic journey in engineering in <span className=" text-indigo">Budapest</span>. I’ve always

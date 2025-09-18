@@ -30,7 +30,7 @@ export default function ExperienceItem({ experience }: { experience: EducationIt
       </div>
       <div className="">
         <h3 className="mt-12 mb-4">
-          Responsibilities<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
+          Responsibilities<span className="h-2 w-2 rounded-full bg-emerald ml-1 inline-block"></span>
         </h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {experience.responsibilities.map((responsibility, index) => (
@@ -45,7 +45,7 @@ export default function ExperienceItem({ experience }: { experience: EducationIt
         {experience.projects.length > 0 && (
           <div className="">
             <h3 className="mt-12 mb-4">
-              Some Projects<span className="h-1 w-1 rounded-full bg-emerald-500 ml-1 inline-block"></span>
+              Some Projects<span className="h-2 w-2 rounded-full bg-blue ml-1 inline-block"></span>
             </h3>
             <ul className="grid grid-cols-1  lg:grid-cols-2 gap-6">
               {experience.projects.map((project, index) => (

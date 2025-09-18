@@ -57,16 +57,16 @@ export default function Education() {
     <div className="text-center md:text-left">
       <h1 className="text-center mt-8 mb-16">Education</h1>
       <div className="flex flex-col md:flex-row md:space-between">
-        <div className="md:w-1/2 md:pr-2 ">
-          <h2 className="mt-12 mb-8 ">Higher Education</h2>
+        <div className="mb-20 md:mb-0 md:border md:border-secondary md:rounded-lg md:p-4 md:mr-4 lg:p-8 md:w-1/2 md:pr-2 ">
+          <h2 className="mb-8 ">Higher Education</h2>
           <ul className="list-disc">
             {education.map(
               (item) => item.type === "university" && <EducationItem key={item.title + item.year} {...item} />
             )}
           </ul>
         </div>
-        <div className="md:w-1/2 md:pl-2 ">
-          <h2 className="mt-12 mb-8 ">Certificates</h2>
+        <div className="md:border md:border-secondary md:rounded-lg md:p-4 md:ml-4 lg:p-8 md:w-1/2 md:pl-2 ">
+          <h2 className="mb-8 ">Certificates</h2>
           <ul className="list-disc">
             {education.map(
               (item) => item.type === "certificate" && <EducationItem key={item.title + item.year} {...item} />
