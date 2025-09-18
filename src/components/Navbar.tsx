@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 h-16 bg-foreground shadow transition-all duration-500 z-50 px-8 ${
+      className={`fixed top-0 left-0 right-0 h-16 bg-tertiary shadow-md transition-all duration-500 z-50 px-8 ${
         isScrolling ? "opacity-80" : "opacity-100"
       }`}
     >

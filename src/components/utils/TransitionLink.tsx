@@ -43,9 +43,9 @@ export default function TransitionLink({ children, href, ...props }: TransitionL
       onClick={handleTransition}
       href={href}
       {...props}
-      className={`${pathName === href ? " text-blue font-bold" : "text-primary-dark"} hover:text-primary-dark-hover ${
-        props.className
-      }`}
+      className={`${
+        pathName === href ? " text-emerald font-bold" : "text-primary-light"
+      } hover:text-primary-dark-hover ${props.className}`}
     >
       {children}
     </Link>

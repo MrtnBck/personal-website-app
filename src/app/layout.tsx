@@ -42,7 +42,7 @@ export default function RootLayout({
           <div className="hidden md:block">
             <Navbar />
           </div>
-          <div className="mt-13 md:mt-20 flex justify-end">
+          <div className="fixed top-11 md:top-20 right-0 ">
             <LocationLiveStatus />
           </div>
           <div className="max-w-6xl mx-auto" id="transition-content">
