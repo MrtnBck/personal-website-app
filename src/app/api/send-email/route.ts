@@ -2,10 +2,10 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { NextRequest, NextResponse } from "next/server";
 
 const sesClient = new SESClient({
-  region: process.env.AWS_REGION!,
+  region: process.env.APP_AWS_REGION!,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.APP_AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.APP_AWS_SECRET_ACCESS_KEY!,
   },
 });
 
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     const params = {
       Destination: {
-        ToAddresses: [process.env.AWS_SES_FROM_EMAIL!], // Your business inbox
+        ToAddresses: [process.env.APP_AWS_SES_FROM_EMAIL!], // Your business inbox
       },
       Message: {
         Body: {
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
           Data: `New Contact Form Message from ${name}`,
         },
       },
-      Source: process.env.AWS_SES_FROM_EMAIL!, // Verified SES sender
+      Source: process.env.APP_AWS_SES_FROM_EMAIL!, // Verified SES sender
       ReplyToAddresses: [email],
     };
 
