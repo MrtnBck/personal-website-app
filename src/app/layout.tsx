@@ -5,8 +5,6 @@ import "./globals.css";
 import ScrollHideNavbar from "@/components/ScrollHideNavbar";
 import Navbar from "@/components/Navbar";
 
-import LocationLiveStatus from "@/components/LocationLiveStatus";
-
 import Footer from "@/components/Footer";
 import FloatingBackground from "@/components/FloatingBackground";
 

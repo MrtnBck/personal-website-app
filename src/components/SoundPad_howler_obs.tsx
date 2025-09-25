@@ -4,7 +4,6 @@ NOTES:
 - The current implementation uses Tone.js for sound playback, which is more complex for the soundboard
 */
 
-import { Howl } from "howler";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 
@@ -19,7 +18,7 @@ interface SoundPadProps {
   isActiveBlink: boolean;
 }
 
-export default React.memo(function SoundPad({ soundSrc, color, id, onIsPlaying, isActiveBlink }: SoundPadProps) {
+export default React.memo(function SoundPad({ soundSrc, color, id, isActiveBlink }: SoundPadProps) {
   //console.error("soundpad component rerenders");
 
   const soundRef = useRef<Howl | null>(null);
