@@ -33,20 +33,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased overflow-x-hidden`}>
-        <FloatingBackground />
-        <main className="relative z-11 mb-10 overflow-hidden px-4 md:px-8">
-          <div className="block md:hidden">
-            <ScrollHideNavbar />
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased flex flex-col min-h-screen relative`}>
+        <main className="relative z-11  overflow-hidden px-4 md:px-8">
+          <div className="hidden md:block absolute inset-0 -z-10 opacity-">
+            <FloatingBackground />
           </div>
-          <div className="hidden md:block">
-            <Navbar />
-          </div>
-          <div className="fixed top-11 md:top-20 right-0 ">
-            <LocationLiveStatus />
-          </div>
-          <div className="max-w-6xl mx-auto" id="transition-content">
-            {children}
+          <div className="mb-10 mt-24">
+            <div className="block md:hidden">
+              <ScrollHideNavbar />
+            </div>
+            <div className="hidden md:block">
+              <Navbar />
+            </div>
+            <div className="fixed top-11 md:top-20 right-0 ">
+              <LocationLiveStatus />
+            </div>
+            <div className="max-w-6xl mx-auto" id="transition-content">
+              {children}
+            </div>
           </div>
         </main>
         <Footer />

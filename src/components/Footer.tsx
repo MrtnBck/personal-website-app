@@ -11,7 +11,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-tertiary px-6 py-6 mt-8 w-full">
+    <footer className="bg-tertiary px-6 py-6 w-full">
       <div className="grid grid-cols-1 md:grid-cols-12 items-center justify-center gap-y-6">
         {/* Left: Logo */}
         <div className="flex justify-center md:col-span-3 order-3 md:order-1 w-full">
