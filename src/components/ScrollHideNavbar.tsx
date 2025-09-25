@@ -11,8 +11,6 @@ export default function ScrollHideNavbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
-  // Handle scroll event to show/hide navbar
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -40,7 +38,7 @@ export default function ScrollHideNavbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 h-[40px] bg-foreground shadow transition-transform duration-300 z-50 ${
+        className={`fixed top-0 left-0 right-0 h-16 bg-tertiary shadow transition-transform duration-300 z-50 border-b border-secondary ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -49,32 +47,48 @@ export default function ScrollHideNavbar() {
           <button className="cursor-pointer" onClick={onToggleMenu}>
             <Icon
               icon={isMenuOpen ? "material-symbols:close" : "material-symbols:menu"}
-              className="w-6 h-6 text-primary-dark transition-transform duration-200"
+              className="w-6 h-6 text-secondary transition-transform duration-200"
             />
           </button>
         </div>
       </header>
       {/* Mobile Menu */}
       <div
-        className={`fixed top-[40px] left-0 right-0 bg-foreground shadow-lg transition-all duration-300 z-40 ${
+        className={`fixed top-16 left-0 right-0 bg-tertiary shadow-lg transition-all duration-300 z-40 border-b  border-secondary ${
           isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-4 py-4">
+        <div className="max-w-screen-xl mx-auto px-4 py-6">
           <nav className="flex flex-col space-y-4">
-            <TransitionLink href="/" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
+            <TransitionLink href="/" className=" hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
               Home
             </TransitionLink>
-            <TransitionLink href="/skills" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
+            <TransitionLink
+              href="/skills"
+              className=" hover:text-secondary transition-colors"
+              onToggleMenu={onToggleMenu}
+            >
               Skills
             </TransitionLink>
-            <TransitionLink href="/education" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
+            <TransitionLink
+              href="/education"
+              className=" hover:text-secondary transition-colors"
+              onToggleMenu={onToggleMenu}
+            >
               Education
             </TransitionLink>
-            <TransitionLink href="/experiences" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
+            <TransitionLink
+              href="/experiences"
+              className=" hover:text-secondary transition-colors"
+              onToggleMenu={onToggleMenu}
+            >
               Experiences
             </TransitionLink>
-            <TransitionLink href="/contact" className="text-primary-dark hover:text-secondary transition-colors" onToggleMenu={onToggleMenu}>
+            <TransitionLink
+              href="/contact"
+              className=" hover:text-secondary transition-colors"
+              onToggleMenu={onToggleMenu}
+            >
               Contact
             </TransitionLink>
           </nav>

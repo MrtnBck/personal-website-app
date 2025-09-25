@@ -24,7 +24,7 @@ export default function MenuItem({ icon, label, description, href }: MenuItemPro
         </div>
         <TransitionLink
           href={href}
-          className="lg:self-end align-bottom text-primary-dark bg-emerald transition-colors px-6 py-2 rounded-md text-base mt-4"
+          className="lg:self-end align-bottom text-primary-dark! bg-emerald transition-colors px-6 py-2 rounded-md text-base mt-4"
         >
           Go to page
         </TransitionLink>

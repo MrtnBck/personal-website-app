@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import MenuItem from "@/components/MenuItem";
+import LocationLiveStatus from "@/components/LocationLiveStatus";
 
 export default function Home() {
   const menuItems = [
@@ -33,8 +34,11 @@ export default function Home() {
 
   return (
     <>
+      <div className="top-20 right-0 ">
+        <LocationLiveStatus />
+      </div>
       {/* SMALL SCREEN */}
-      <div className="md:hidden max-w-md mx-auto flex flex-col items-start relative min-h-[600px]">
+      <div className="md:hidden max-w-md mx-auto flex flex-col items-start relative md:min-h-[600px]">
         <h1 className="text-[64px] font-bold leading-none tracking-tighter mt-8 relative z-10">
           Hi there
           <br />

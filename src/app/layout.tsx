@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased flex flex-col min-h-screen relative`}>
-        <main className="relative z-11  overflow-hidden px-4 md:px-8">
+        <main className="relative z-11  overflow-hidden px-4 md:px-8 mt-0">
           <div className="hidden md:block absolute inset-0 -z-10 opacity-">
             <FloatingBackground />
           </div>
@@ -45,9 +45,7 @@ export default function RootLayout({
             <div className="hidden md:block">
               <Navbar />
             </div>
-            <div className="fixed top-11 md:top-20 right-0 ">
-              <LocationLiveStatus />
-            </div>
+
             <div className="max-w-6xl mx-auto" id="transition-content">
               {children}
             </div>

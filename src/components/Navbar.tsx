@@ -28,9 +28,6 @@ export default function Navbar() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      /* if (isScrollingTimeout) {
-        clearTimeout(isScrollingTimeout);
-      } */
     };
   }, []);
 

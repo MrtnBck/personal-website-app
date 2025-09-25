@@ -60,7 +60,7 @@ export default function LocationLiveStatus() {
   }, []);
 
   return (
-    <div className="p-4 pr-8 bg-tertiar/10 backdrop-blur-md rounded-md">
+    <div className="p-4  pr-0 flex flex-col items-end">
       <p className="font-semibold">
         Based in Vienna, Austria <span>🇦🇹</span>
       </p>
