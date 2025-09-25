@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { NextRequest, NextResponse } from "next/server";
 
