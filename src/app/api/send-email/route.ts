@@ -1,5 +1,11 @@
+export const runtime = "nodejs";
+
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { NextRequest, NextResponse } from "next/server";
+
+import { STSClient, GetCallerIdentityCommand } from "@aws-sdk/client-sts";
+const ident = await new STSClient({}).send(new GetCallerIdentityCommand({}));
+console.log("Running as", ident);
 
 const sesClient = new SESClient({
   region: process.env.APP_AWS_REGION!,
