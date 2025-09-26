@@ -1,5 +1,3 @@
-export const runtime = "nodejs";
-
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -52,7 +50,20 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json({ success: false, message: "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to send email",
+        error: error,
+        data: {
+          region: process.env.APP_AWS_REGION!,
+          credentials: {
+            accessKeyId: process.env.APP_AWS_ACCESS_KEY_ID!,
+            secretAccessKey: process.env.APP_AWS_SECRET_ACCESS_KEY!,
+          },
+        },
+      },
+      { status: 500 }
+    );
   }
 }
